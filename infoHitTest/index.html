@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>InfoHitTest</title>
+</head>
+<body>
+    <div class="container" id="root">
+        <button @click.prevent="addClicked" class="btn btn-info mb-3 mt-3">{{addShow.btnText}}</button>
+        <div v-if="addShow.isTrue" class="add">
+            <div class="form-group">
+                <label for="name">Введите наименование товара</label>
+                <input v-model="name" type="text" class="form-control" placeholder="Наименование" id="name">
+            </div>
+            <div class="form-group">
+                <label for="price">Введите цену товара</label>
+                <input v-model="price" type="number" class="form-control" placeholder="Наименование" id="price">
+            </div>
+            <button @click="addData" type="submit" class="btn btn-info">Добавить</button>
+        </div>
+        <div class="d-flex justify-content-between align-items-stretch flex-wrap" v-else>
+            <div class="card text-center mb-3" style="width: 300px" v-for="card in cards" :key="card.id" :id="card.id">
+                <h5 class="card-title mt-3">{{card.name}}</h5>
+                <p class="card-body">Цена: {{card.price}}</p>
+            </div>
+        </div>
+    </div>
+    <script src="js/App.js"></script>    
+</body>
+</html>
